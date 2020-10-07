@@ -18,7 +18,7 @@
   ],
   "license": "",
   "name": "lzi/datacite",
-  "readme": "",
+  "readme": "readme.md",
   "require": {
     "symfony/http-client": "*",
     "php": "^7.2"

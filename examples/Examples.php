@@ -38,4 +38,3 @@ var_dump($dataCiteRecord->toApiJson());
 
 
 
-
