@@ -88,7 +88,7 @@ The aim of this project is to provide a simply-to-use php interface for
         $dataCiteClient->getException() / ...->getErrorMessage() / ->getResponse() / ->getStatus() 
         
         
-### 3) Connect to you own models by implementing a DataCiteDataProvider
+### 3) Connect to your own models by implementing a `DataCiteDataProvider`
 
 - the `DataCiteDataProvider` interface provides a clean interface to your custom models
 - just implement this interface on your models and obtain a DataCiteRecord by 
