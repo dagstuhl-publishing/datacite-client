@@ -1,0 +1,28 @@
+{
+  "authors": [
+    {
+      "name": "Michael Didas",
+      "email": "michael.didas@dagstuhl.de",
+      "role": "developer"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "LZI\\DataCite\\": "src/"
+    }
+  },
+  "description": "A simple DataCite API client for creating/updating DOI metadata",
+  "keywords": [
+    "DataCite",
+    "Metadata"
+  ],
+  "license": "",
+  "name": "lzi/datacite",
+  "readme": "",
+  "require": {
+    "symfony/http-client": "*",
+    "php": "^7.2"
+  },
+  "type": "library",
+  "time": "2020-10-07"
+}
