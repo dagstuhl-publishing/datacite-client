@@ -73,11 +73,20 @@ The aim of this project is to provide a simply-to-use php interface for
  
         $dataCiteClient = new DataCiteClient('username', 'password', 'api-url');
         
-        $dataCiteClient->updateDataCiteRecord($dataCiteRecord);
-
-- The same lines of code produce a draft record, if the DOI was not registered before. To make this draft data publicly available and finally register the doi, simple call 
+        $dataCiteRecord = $dataCiteClient->updateDataCiteRecord($dataCiteRecord);
         
-        $dataCiteClient->setDoiState($dataCiteRecord->getDoi(), DataCiteClient::STATE_FINDABLE);
+        if ($dataCiteRecord === NULL) {
+            // error handling goes here
+        }
+
+- The same lines of code produce a draft record, if the DOI was not registered before. To make this draft data publicly available and finally register the doi, simply call 
+        
+        $dataCiteRecord = $dataCiteClient->setDoiState($dataCiteRecord->getDoi(), DataCiteClient::STATE_FINDABLE);
+        
+- For error handling/debugging, use the following methods showing details on the status of the last HTTP-request:
+
+        $dataCiteClient->getException() / ...->getErrorMessage() / ->getResponse() / ->getStatus() 
+        
         
 ### 3) Connect to you own models by implementing a DataCiteDataProvider
 
