@@ -1,12 +1,12 @@
-# The LZI DataCite Api client
+# The LZI DataCite API client
 
 The aim of this project is to provide a simply-to-use php interface for 
 - providing scheme-compliant DataCite metadata
 - registering/updating the doi metadata via the DataCite API.
 
-###Code Examples:
+### Code Examples:
 
-###1) Creation of a metadata record 
+### 1) Creation of a metadata record 
 
 - General Information:
 
@@ -67,7 +67,7 @@ The aim of this project is to provide a simply-to-use php interface for
 
         var_dump($dataCiteRecord->toApiJson());
 
-###2) Registering/Updating DOI Metadata 
+### 2) Registering/Updating DOI Metadata 
 
 - Updating an existing record:
  
@@ -79,7 +79,7 @@ The aim of this project is to provide a simply-to-use php interface for
         
         $dataCiteClient->setDoiState($dataCiteRecord->getDoi(), DataCiteClient::STATE_FINDABLE);
         
-###3) Connect to you own models by implementing a DataCiteDataProvider
+### 3) Connect to you own models by implementing a DataCiteDataProvider
 
 - the `DataCiteDataProvider` interface provides a clean interface to your custom models
 - just implement this interface on your models and obtain a DataCiteRecord by 
