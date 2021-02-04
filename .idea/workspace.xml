@@ -53,7 +53,7 @@
       <updated>1602056270631</updated>
       <workItem from="1602056271681" duration="1333000" />
       <workItem from="1602057633382" duration="5057000" />
-      <workItem from="1612444025823" duration="2304000" />
+      <workItem from="1612444025823" duration="3978000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <created>1602057853320</created>
@@ -104,7 +104,14 @@
       <option name="project" value="LOCAL" />
       <updated>1602062862196</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="code revision DataCiteClient.php">
+      <created>1612447072804</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1612447072804</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -118,32 +125,7 @@
     <MESSAGE value="added example file" />
     <MESSAGE value="added readme.md" />
     <MESSAGE value="minor changes readme.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="minor changes readme.md" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="534" y="187" key="CommitChangelistDialog2" timestamp="1602062862099">
-      <screen x="0" y="23" width="1920" height="990" />
-    </state>
-    <state x="534" y="187" key="CommitChangelistDialog2/0.23.1920.990/-1680.479.1680.1027@0.23.1920.990" timestamp="1602062862099" />
-    <state x="641" y="246" key="NewPhpClassDialog" timestamp="1602057955587">
-      <screen x="0" y="23" width="1920" height="990" />
-    </state>
-    <state x="641" y="246" key="NewPhpClassDialog/0.23.1920.990/-1680.479.1680.1027@0.23.1920.990" timestamp="1602057955587" />
-    <state x="319" y="108" key="SettingsEditor" timestamp="1602057655929">
-      <screen x="0" y="23" width="1920" height="990" />
-    </state>
-    <state x="319" y="108" key="SettingsEditor/0.23.1920.990/-1680.479.1680.1027@0.23.1920.990" timestamp="1602057655929" />
-    <state x="528" y="253" key="Vcs.Push.Dialog.v2" timestamp="1602062864106">
-      <screen x="0" y="23" width="1920" height="990" />
-    </state>
-    <state x="528" y="253" key="Vcs.Push.Dialog.v2/0.23.1920.990/-1680.479.1680.1027@0.23.1920.990" timestamp="1602062864106" />
-    <state x="517" y="224" width="586" height="490" key="find.popup" timestamp="1602056907856">
-      <screen x="0" y="23" width="1920" height="990" />
-    </state>
-    <state x="517" y="224" width="586" height="490" key="find.popup/0.23.1920.990/-1680.479.1680.1027@0.23.1920.990" timestamp="1602056907856" />
-    <state x="750" y="414" key="git4idea.remote.GitConfigureRemotesDialog" timestamp="1602057835880">
-      <screen x="0" y="23" width="1920" height="990" />
-    </state>
-    <state x="750" y="414" key="git4idea.remote.GitConfigureRemotesDialog/0.23.1920.990/-1680.479.1680.1027@0.23.1920.990" timestamp="1602057835880" />
+    <MESSAGE value="code revision DataCiteClient.php" />
+    <option name="LAST_COMMIT_MESSAGE" value="code revision DataCiteClient.php" />
   </component>
 </project>

@@ -158,9 +158,10 @@ class DataCiteClient
     {
         $metadata = $this->makeRequest('GET', $this->providerUrl.self::ENDPOINT_DOIS.$doi);
 
-        return ($this->lastRequestFailed() AND $metadata !== NULL)
-            ? new DataCiteRecord($metadata)
-            : NULL;
+        return ($this->lastRequestFailed() OR $metadata === NULL)
+            ? NULL
+            : new DataCiteRecord($metadata);
+
     }
 
     /**
@@ -178,7 +179,7 @@ class DataCiteClient
             ]
         );
 
-        return ($this->lastRequestFailed() AND $metadata !== NULL)
+        return ($this->lastRequestFailed() OR $metadata === NULL)
             ? NULL
             : new DataCiteRecord($metadata);
     }
@@ -209,7 +210,7 @@ class DataCiteClient
             ]
         );
 
-        return ($this->lastRequestFailed() AND $metadata !== NULL)
+        return ($this->lastRequestFailed() OR $metadata === NULL)
             ? NULL
             : new DataCiteRecord($metadata);
     }
