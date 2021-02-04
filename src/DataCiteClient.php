@@ -129,29 +129,36 @@ class DataCiteClient
             : $responseBody;
     }
 
+    private function makeRequest(...$requestParams)
+    {
+        $data = NULL;
+
+        try {
+            $this->exception = NULL;
+            $this->status = NULL;
+            $this->response = NULL;
+            $this->response = $this->httpClient->request(...$requestParams);
+            $this->status = $this->response->getStatusCode();
+
+            $data = $this->getResponseBody();
+        }
+        catch(TransportExceptionInterface $ex) {
+            $this->response = NULL;
+            $this->exception = $ex;
+        }
+
+        return $data;
+    }
+
     /**
      * @param string $doi
      * @return DataCiteRecord|null
      */
     public function getDataCiteRecord(string $doi)
     {
-        try {
-            $this->exception = NULL;
-            $this->status = NULL;
-            $this->response = NULL;
-            $this->response = $this->httpClient->request('GET', $this->providerUrl.self::ENDPOINT_DOIS.$doi);
-            $this->status = $this->response->getStatusCode();
+        $metadata = $this->makeRequest('GET', $this->providerUrl.self::ENDPOINT_DOIS.$doi);
 
-            $metadata = $this->getResponseBody();
-        }
-        catch(TransportExceptionInterface $ex) {
-            $this->response = NULL;
-            $this->exception = $ex;
-
-            return NULL;
-        }
-
-        return ($this->status == 200 OR $this->status == 201)
+        return ($this->lastRequestFailed() AND $metadata !== NULL)
             ? new DataCiteRecord($metadata)
             : NULL;
     }
@@ -162,31 +169,16 @@ class DataCiteClient
      */
     public function updateDataCiteRecord(DataCiteRecord $dataCiteRecord)
     {
-        try {
-            $this->exception = NULL;
-            $this->status = NULL;
-            $this->response = NULL;
-            $this->response = $this->httpClient->request(
-                'PUT',
-                $this->providerUrl.self::ENDPOINT_DOIS.$dataCiteRecord->getDoi(),
-                [
-                    'headers' => [ 'Content-type: application/json' ],
-                    'body' => $dataCiteRecord->toApiJson()
-                ]
-            );
+        $metadata = $this->makeRequest(
+            'PUT',
+            $this->providerUrl.self::ENDPOINT_DOIS.$dataCiteRecord->getDoi(),
+            [
+                'headers' => [ 'Content-type: application/json' ],
+                'body' => $dataCiteRecord->toApiJson()
+            ]
+        );
 
-            $this->status = $this->response->getStatusCode();
-
-            $metadata = $this->getResponseBody();
-        }
-        catch(TransportExceptionInterface $ex) {
-            $this->response = NULL;
-            $this->exception = $ex;
-
-            return NULL;
-        }
-
-        return $this->lastRequestFailed()
+        return ($this->lastRequestFailed() AND $metadata !== NULL)
             ? NULL
             : new DataCiteRecord($metadata);
     }
@@ -208,32 +200,16 @@ class DataCiteClient
             ]
         ];
 
-        try {
-            $this->exception = NULL;
-            $this->status = NULL;
-            $this->response = NULL;
-            $this->response = $this->httpClient->request(
-                'PUT',
-                $this->providerUrl.self::ENDPOINT_DOIS.$doi,
-                [
-                    'headers' => [ 'Content-type: application/json' ],
-                    'body' => json_encode($data)
-                ]
-            );
+        $metadata = $this->makeRequest(
+            'PUT',
+            $this->providerUrl.self::ENDPOINT_DOIS.$doi,
+            [
+                'headers' => [ 'Content-type: application/json' ],
+                'body' => json_encode($data)
+            ]
+        );
 
-            $this->status = $this->response->getStatusCode();
-            $this->status = $this->response->getStatusCode();
-
-            $metadata = $this->getResponseBody();
-        }
-        catch(TransportExceptionInterface $ex) {
-            $this->response = NULL;
-            $this->exception = $ex;
-
-            return NULL;
-        }
-
-        return $this->lastRequestFailed()
+        return ($this->lastRequestFailed() AND $metadata !== NULL)
             ? NULL
             : new DataCiteRecord($metadata);
     }
