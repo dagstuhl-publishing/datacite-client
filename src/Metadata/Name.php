@@ -4,7 +4,6 @@ namespace LZI\DataCite\Metadata;
 
 class Name
 {
-
     private $name;
     private $nameType;
     private $givenName;

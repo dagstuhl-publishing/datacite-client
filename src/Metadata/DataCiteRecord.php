@@ -167,6 +167,26 @@ class DataCiteRecord
         }
     }
 
+    // ---- related items ----------------------------
+
+    public function addRelatedItem(RelatedItem $relatedItem)
+    {
+        if(!isset($this->attributes->relatedItems)) {
+            $this->attributes->relatedItems = [];
+        }
+
+        $this->attributes->relatedItems[] = $relatedItem->toApiObject();
+    }
+
+    public function setRelatedItems(array $relatedItems)
+    {
+        $this->attributes->relatedItems = [];
+
+        foreach($relatedItems as $relatedItem) {
+            $this->addRelatedItem($relatedItem);
+        }
+    }
+
     // ---- alternate identifiers --------------------
 
     public function addAlternateIdentifier(AlternateIdentifier $alternateIdentifier)

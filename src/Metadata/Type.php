@@ -16,7 +16,9 @@ class Type
     const RESOURCE_TYPE_SEMINAR_REPORT = 'Seminar Report';
     const RESOURCE_TYPE_SEMINAR_REPORTS = 'Seminar Reports';
 
+    // TODO: complete https://schema.datacite.org/meta/kernel-4.4/doc/DataCite-MetadataKernel_v4.4.pdf, p. 16
     const RESOURCE_TYPE_GENERAL_AUDIOVISUAL = 'Audiovisual';
+    const RESOURCE_TYPE_GENERAL_BOOK = 'Book';
     const RESOURCE_TYPE_GENERAL_COLLECTION = 'Collection';
     const RESOURCE_TYPE_GENERAL_DATA_PAPER = 'DataPaper';
     const RESOURCE_TYPE_GENERAL_DATASET = 'Dataset';
