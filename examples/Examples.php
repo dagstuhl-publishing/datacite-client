@@ -34,6 +34,12 @@ $related[] = RelatedIdentifier::cites('10....', RelatedIdentifier::TYPE_DOI);
 
 $dataCiteRecord->setRelatedIdentifiers($related);
 
+
+$relatedItem = new \LZI\DataCite\Metadata\RelatedItem('article', 'cites');
+$relatedItem->addCreator($creator);
+$relatedItem->setPublicationYear('1994');
+$dataCiteRecord->addRelatedItem($relatedItem);
+
 var_dump($dataCiteRecord->toApiJson());
 
 

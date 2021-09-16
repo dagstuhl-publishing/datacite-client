@@ -29,6 +29,8 @@ class RelatedIdentifier
     private $relatedIdentifierType;
     private $resourceTypeGeneral;
 
+    // TODO: add relatedMetadataScheme, schemeURI, schemeType
+
     public function __construct(string $relationType, string $relatedIdentifier, string $relatedIdentifierType, string $resourceTypeGeneral = NULL)
     {
         $this->relationType = $relationType;
