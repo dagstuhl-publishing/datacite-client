@@ -15,7 +15,7 @@ class RelatedItem
     const RELATION_TYPE_IS_PART_OF = 'IsPartOf';
 
     const OPTIONAL_STRING_RELATED_PROPERTIES = [
-        'PublicationYear',
+        'publicationYear',
         'volume',
         'issue',
         'firstPage',
