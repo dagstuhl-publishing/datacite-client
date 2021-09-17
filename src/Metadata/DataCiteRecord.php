@@ -183,7 +183,8 @@ class DataCiteRecord
         $this->attributes->relatedItems = [];
 
         foreach($relatedItems as $relatedItem) {
-            $this->addRelatedItem($relatedItem);
+            //$this->addRelatedItem($relatedItem);
+            $this->attributes->relatedItems = $relatedItem->toApiObject();
         }
     }
 
@@ -219,7 +220,7 @@ class DataCiteRecord
 
     public function getDoi()
     {
-        return $this->attributes->doi;
+        return $this->attributes->doi ?? '';
     }
 
     // ---- formats ----------------------------------
@@ -260,12 +261,13 @@ class DataCiteRecord
             $this->attributes->titles = [];
         }
 
+        /*
         // if only one title is provided, api returns no array but stdClass
         // so, when adding another title, convert to array
         if (!is_array($this->attributes->titles)) {
             $this->attributes->titles = [ $this->attributes->titles ];
         }
-
+*/
         $this->attributes->titles[] = $title->toApiObject();
     }
 
@@ -277,7 +279,7 @@ class DataCiteRecord
         $this->attributes->titles = [];
 
         foreach($titles as $title) {
-            $this->attributes->titles = $title->toApiObject();
+            $this->attributes->titles[] = $title->toApiObject();
         }
     }
 
@@ -286,7 +288,7 @@ class DataCiteRecord
         $t = [];
 
         foreach($this->attributes->titles as $title) {
-            $t[] = new Title($title->title, $title->lang ?? NULL, $title->subtitle ?? NULL);
+            $t[] = new Title($title->title, $title->lang ?? NULL, $title->titleType ?? NULL);
         }
 
         return $t;
@@ -448,10 +450,10 @@ class DataCiteRecord
     {
         return isset($this->attributes->types)
             ? new Type(
-                    $this->attributes->types->resourceType,
-                    $this->attributes->types->resourceTypeGeneral,
-             $this->attributes->types->bibtex ?? NULL
-                )
+                $this->attributes->types->resourceType,
+                $this->attributes->types->resourceTypeGeneral,
+                $this->attributes->types->bibtex ?? NULL
+            )
             : NULL;
     }
 
@@ -469,12 +471,12 @@ class DataCiteRecord
     public function toApiJson()
     {
         $data = (object) [
-                    'data' => [
-                        'id' => $this->getDoi(),
-                        'type' => 'dois',
-                        'attributes' => $this->attributes
-                    ]
-                ];
+            'data' => [
+                'id' => $this->getDoi(),
+                'type' => 'dois',
+                'attributes' => $this->attributes
+            ]
+        ];
 
         return json_encode($data);
     }

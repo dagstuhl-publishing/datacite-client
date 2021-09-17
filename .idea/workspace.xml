@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9ad7f58d-4af2-4974-b23f-8c3854d804ae" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Metadata/Number.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/examples/Examples.php" beforeDir="false" afterPath="$PROJECT_DIR$/examples/Examples.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Metadata/RelatedIdentifier.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Metadata/RelatedIdentifier.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Metadata/DataCiteRecord.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Metadata/DataCiteRecord.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Metadata/RelatedItem.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Metadata/RelatedItem.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -82,7 +80,7 @@
       <workItem from="1602056271681" duration="1333000" />
       <workItem from="1602057633382" duration="5057000" />
       <workItem from="1612444025823" duration="3978000" />
-      <workItem from="1631778969946" duration="6476000" />
+      <workItem from="1631778969946" duration="10897000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <created>1602057853320</created>
@@ -140,7 +138,14 @@
       <option name="project" value="LOCAL" />
       <updated>1612447072804</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="added Number class; updated RelatedItem structure">
+      <created>1631785843408</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1631785843408</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -155,6 +160,7 @@
     <MESSAGE value="added readme.md" />
     <MESSAGE value="minor changes readme.md" />
     <MESSAGE value="code revision DataCiteClient.php" />
-    <option name="LAST_COMMIT_MESSAGE" value="code revision DataCiteClient.php" />
+    <MESSAGE value="added Number class; updated RelatedItem structure" />
+    <option name="LAST_COMMIT_MESSAGE" value="added Number class; updated RelatedItem structure" />
   </component>
 </project>

@@ -15,14 +15,15 @@ class RelatedItem
     const RELATION_TYPE_IS_PART_OF = 'IsPartOf';
 
     const OPTIONAL_STRING_RELATED_PROPERTIES = [
-        //'relatedItemIdentifier',
         'PublicationYear',
         'volume',
         'issue',
         'firstPage',
         'lastPage',
-        'Publisher',
-        'edition'
+        'publisher',
+        'edition',
+        'relatedItemIdentifier',
+        'relatedItemIdentifierType'
     ];
 
     private string $relatedItemType;
@@ -38,8 +39,9 @@ class RelatedItem
     /** @var Contributor[] */
     private array $contributors;
 
-    /** @var RelatedIdentifier  */
-    private RelatedIdentifier $relatedItemIdentifier;
+    /** @var string */
+    private string $relatedItemIdentifier;
+    private string $relatedItemIdentifierType;
 
     /** @var Creator[]  */
     private array $creators = [];
@@ -59,9 +61,14 @@ class RelatedItem
     // TODO: optional (0-1) relatedItemIdentifier, relatedItemIdentifierType
     // Series -> ISBN
 
-    public function setRelatedItemIdentifier(RelatedIdentifier $relatedItemIdentifier)
+    public function setRelatedItemIdentifier(string $relatedItemIdentifier)
     {
         $this->relatedItemIdentifier = $relatedItemIdentifier;
+    }
+
+    public function setRelatedItemIdentifierType(string $relatedItemIdentifierType)
+    {
+        $this->relatedItemIdentifierType = $relatedItemIdentifierType;
     }
 
     public function addCreator(Creator $creator)
@@ -144,10 +151,10 @@ class RelatedItem
         // properties of type array/object
         if (isset($this->creators) AND count($this->creators) > 0) {
 
-           $item['creators'] = [];
-           foreach ($this->creators as $creator) {
+            $item['creators'] = [];
+            foreach ($this->creators as $creator) {
                 $item['creators'][] = $creator->toApiObject();
-           }
+            }
         }
 
         if (isset($this->numbers) AND count($this->numbers) > 0) {
