@@ -24,59 +24,36 @@ class DataCiteClient
         self::STATE_REGISTERED => 'hide'
     ];
 
-    /**
-     * @var HttpClientInterface|NULL
-     */
-    private $httpClient;
-
-    /**
-     * @var string
-     */
-    private $providerUrl;
-
-    /**
-     * @var ResponseInterface|null
-     */
-    private $response = NULL;
+    private string $providerUrl;
+    private ?HttpClientInterface $httpClient;
+    private ?ResponseInterface $response = NULL;
 
     private $status = NULL;
-    private $exception = NULL;
+    private ?Throwable $exception = NULL;
 
     public function __construct(string $username, string $password, string $providerUrl) {
         $this->providerUrl = str_replace('{{ CREDENTIALS }}', $username.':'.$password, $providerUrl);
         $this->httpClient = HttpClient::create();
     }
 
-    /**
-     * @return bool
-     */
-    public function lastRequestFailed()
+    public function lastRequestFailed() : bool
     {
         return !($this->status == 200 OR $this->status == 201);
     }
 
-    /**
-     * @return string
-     */
-    public function getUrl()
+    public function getUrl() : string
     {
         $parts =  explode('@', $this->providerUrl);
 
         return $parts[1] ?? 'ERROR';
     }
 
-    /**
-     * @return ResponseInterface|null
-     */
-    public function getResponse()
+    public function getResponse() : ?ResponseInterface
     {
         return $this->response;
     }
 
-    /**
-     * @return int|null
-     */
-    public function getStatus()
+    public function getStatus() : ?int
     {
         $statusCode = NULL;
 
@@ -90,16 +67,12 @@ class DataCiteClient
         return $statusCode;
     }
 
-    /** @return Throwable */
-    public function getException()
+    public function getException() : ?Throwable
     {
         return $this->exception;
     }
 
-    /**
-     * @return string
-     */
-    public function getErrorMessage()
+    public function getErrorMessage() : string
     {
         if ($this->exception !== NULL) {
             return self::ERROR_PREFIX. $this->exception->getMessage();
@@ -110,10 +83,7 @@ class DataCiteClient
             : '';
     }
 
-    /**
-     * @return stdClass|null
-     */
-    private function getResponseBody()
+    private function getResponseBody() : ?stdClass
     {
         $responseBody = NULL;
 
@@ -129,7 +99,7 @@ class DataCiteClient
             : $responseBody;
     }
 
-    private function makeRequest(...$requestParams)
+    private function makeRequest(...$requestParams) : ?stdClass
     {
         $data = NULL;
 
@@ -150,11 +120,7 @@ class DataCiteClient
         return $data;
     }
 
-    /**
-     * @param string $doi
-     * @return DataCiteRecord|null
-     */
-    public function getDataCiteRecord(string $doi)
+    public function getDataCiteRecord(string $doi) : ?DataCiteRecord
     {
         $metadata = $this->makeRequest('GET', $this->providerUrl.self::ENDPOINT_DOIS.$doi);
 
@@ -164,11 +130,7 @@ class DataCiteClient
 
     }
 
-    /**
-     * @param DataCiteRecord $dataCiteRecord
-     * @return DataCiteRecord|null
-     */
-    public function updateDataCiteRecord(DataCiteRecord $dataCiteRecord)
+    public function updateDataCiteRecord(DataCiteRecord $dataCiteRecord) : ?DataCiteRecord
     {
         $metadata = $this->makeRequest(
             'PUT',
@@ -185,13 +147,9 @@ class DataCiteClient
     }
 
     /**
-     * @param string $doi
-     * @param string $state
-     * @return DataCiteRecord|null
-     *
      * see the self::STATE_... constants for possible states
      */
-    public function setDoiState(string $doi, string $state)
+    public function setDoiState(string $doi, string $state) : ?DataCiteRecord
     {
         $data =  [
             'data' => [

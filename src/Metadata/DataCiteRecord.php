@@ -37,7 +37,7 @@ class DataCiteRecord
         }
     }
 
-    public static function fromDataProvider(DataCiteDataProvider $dataCiteInterface)
+    public static function fromDataProvider(DataCiteDataProvider $dataCiteInterface) : DataCiteRecord
     {
         $dataCiteRecord = new static();
 
@@ -197,7 +197,7 @@ class DataCiteRecord
         $this->attributes->doi = $doi;
     }
 
-    public function getDoi()
+    public function getDoi() : ?string
     {
         return $this->attributes->doi;
     }
@@ -215,7 +215,7 @@ class DataCiteRecord
     /**
      * @return string[]
      */
-    public function getFormats()
+    public function getFormats() : array
     {
         return $this->attributes->formats ?? [];
     }
@@ -227,7 +227,7 @@ class DataCiteRecord
         $this->attributes->sizes = $sizes;
     }
 
-    public function getSizes()
+    public function getSizes() : array
     {
         return $this->attributes->sizes ?? [];
     }
@@ -261,7 +261,7 @@ class DataCiteRecord
         }
     }
 
-    public function getTitles()
+    public function getTitles() : array
     {
         $t = [];
 
@@ -279,7 +279,7 @@ class DataCiteRecord
         $this->attributes->url = $url;
     }
 
-    public function getUrl()
+    public function getUrl() : ?string
     {
         return $this->attributes->url ?? NULL;
     }
@@ -291,7 +291,7 @@ class DataCiteRecord
         $this->attributes->publisher = $publisher;
     }
 
-    public function getPublisher()
+    public function getPublisher() : ?string
     {
         return $this->attributes->publisher ?? NULL;
     }
@@ -303,7 +303,7 @@ class DataCiteRecord
         $this->attributes->publicationYear = $year;
     }
 
-    public function getPublicationYear()
+    public function getPublicationYear() : ?int
     {
         return $this->attributes->publicationYear;
     }
@@ -315,7 +315,7 @@ class DataCiteRecord
         $this->attributes->language = $languageCode;
     }
 
-    public function getLanguage()
+    public function getLanguage() : ?string
     {
         return $this->attributes->language ?? NULL;
     }
@@ -346,11 +346,11 @@ class DataCiteRecord
     /**
      * @return Rights[]
      */
-    public function getRightsList()
+    public function getRightsList() : array
     {
         $rightsList = [];
         foreach($this->attributes->rightsList as $rights) {
-            $rightsList = new Rights(
+            $rightsList[] = new Rights(
                 $rights->rights,
                 $rights->rightsUri ?? NULL,
                 $rights->lang ?? NULL,
@@ -392,7 +392,7 @@ class DataCiteRecord
     /**
      * @return Subject[]
      */
-    public function getSubjects()
+    public function getSubjects() : array
     {
         $subjects = [];
 
@@ -413,18 +413,12 @@ class DataCiteRecord
 
     // ---- types ------------------------------------
 
-    /**
-     * @param Type $type
-     */
     public function setType(Type $type)
     {
         $this->attributes->types = $type->toApiObject();
     }
 
-    /**
-     * @return Type|null
-     */
-    public function getType()
+    public function getType() : ?Type
     {
         return isset($this->attributes->types)
             ? new Type(
@@ -435,18 +429,12 @@ class DataCiteRecord
             : NULL;
     }
 
-    /**
-     * @return string|null
-     */
-    public function getState()
+    public function getState() : ?string
     {
         return $this->attributes->state ?? NULL;
     }
 
-    /**
-     * @return string
-     */
-    public function toApiJson()
+    public function toApiJson() : string
     {
         $data = (object) [
                     'data' => [
@@ -459,7 +447,7 @@ class DataCiteRecord
         return json_encode($data);
     }
 
-    public function getAttributes()
+    public function getAttributes() : array
     {
         return json_decode(json_encode((object) $this->attributes), true);
     }
