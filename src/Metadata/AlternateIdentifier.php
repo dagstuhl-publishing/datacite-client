@@ -1,6 +1,6 @@
 <?php
 
-namespace LZI\DataCite\Metadata;
+namespace Dagstuhl\DataCite\Metadata;
 
 class AlternateIdentifier
 {

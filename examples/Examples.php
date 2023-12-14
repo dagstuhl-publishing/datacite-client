@@ -2,13 +2,13 @@
 
 require __DIR__ . '/../vendor/autoload.php';
 
-use LZI\DataCite\Metadata\Affiliation;
-use LZI\DataCite\Metadata\Contributor;
-use LZI\DataCite\Metadata\Creator;
-use LZI\DataCite\Metadata\DataCiteRecord;
-use LZI\DataCite\Metadata\Name;
-use LZI\DataCite\Metadata\RelatedIdentifier;
-use LZI\DataCite\Metadata\Title;
+use Dagstuhl\DataCite\Metadata\Affiliation;
+use Dagstuhl\DataCite\Metadata\Contributor;
+use Dagstuhl\DataCite\Metadata\Creator;
+use Dagstuhl\DataCite\Metadata\DataCiteRecord;
+use Dagstuhl\DataCite\Metadata\Name;
+use Dagstuhl\DataCite\Metadata\RelatedIdentifier;
+use Dagstuhl\DataCite\Metadata\Title;
 
 $dataCiteRecord = new DataCiteRecord();
 

@@ -1,8 +1,8 @@
 <?php
 
-namespace LZI\DataCite\Metadata;
+namespace Dagstuhl\DataCite\Metadata;
 
-use LZI\DataCite\DataCiteDataProvider;
+use Dagstuhl\DataCite\DataCiteDataProvider;
 use stdClass;
 
 class DataCiteRecord

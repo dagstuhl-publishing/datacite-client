@@ -1,17 +1,17 @@
 <?php
 
-namespace LZI\DataCite;
+namespace Dagstuhl\DataCite;
 
-use LZI\DataCite\Metadata\AlternateIdentifier;
-use LZI\DataCite\Metadata\Contributor;
-use LZI\DataCite\Metadata\Creator;
-use LZI\DataCite\Metadata\Date;
-use LZI\DataCite\Metadata\Description;
-use LZI\DataCite\Metadata\RelatedIdentifier;
-use LZI\DataCite\Metadata\Rights;
-use LZI\DataCite\Metadata\Subject;
-use LZI\DataCite\Metadata\Title;
-use LZI\DataCite\Metadata\Type;
+use Dagstuhl\DataCite\Metadata\AlternateIdentifier;
+use Dagstuhl\DataCite\Metadata\Contributor;
+use Dagstuhl\DataCite\Metadata\Creator;
+use Dagstuhl\DataCite\Metadata\Date;
+use Dagstuhl\DataCite\Metadata\Description;
+use Dagstuhl\DataCite\Metadata\RelatedIdentifier;
+use Dagstuhl\DataCite\Metadata\Rights;
+use Dagstuhl\DataCite\Metadata\Subject;
+use Dagstuhl\DataCite\Metadata\Title;
+use Dagstuhl\DataCite\Metadata\Type;
 
 interface DataCiteDataProvider
 {

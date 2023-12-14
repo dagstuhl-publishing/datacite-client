@@ -1,8 +1,8 @@
 <?php
 
-namespace LZI\DataCite;
+namespace Dagstuhl\DataCite;
 
-use LZI\DataCite\Metadata\DataCiteRecord;
+use Dagstuhl\DataCite\Metadata\DataCiteRecord;
 use stdClass;
 use Symfony\Component\HttpClient\HttpClient;
 use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
