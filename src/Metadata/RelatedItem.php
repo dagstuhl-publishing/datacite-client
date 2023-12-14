@@ -22,6 +22,7 @@ class RelatedItem
         'lastPage',
         'publisher',
         'edition',
+        'number'
     ];
 
     private string $relatedItemType;
@@ -33,6 +34,7 @@ class RelatedItem
     private string $lastPage;
     private string $publisher;
     private string $edition;
+    private string $number;
 
     /** @var Contributor[] */
     private array $contributors;
@@ -46,9 +48,6 @@ class RelatedItem
 
     /** @var Title[] */
     private array $titles = [];
-
-    /** @var Number[] */
-    private array $numbers = [];
 
     public function __construct(string $relatedItemType, string $relationType)
     {
@@ -79,11 +78,6 @@ class RelatedItem
         $this->titles[] = $title;
     }
 
-    public function addNumber(Number $number): void
-    {
-        $this->numbers[] = $number;
-    }
-
     public function setPublicationYear(int $year): void
     {
         $this->publicationYear = $year;
@@ -99,7 +93,7 @@ class RelatedItem
         $this->issue = $issue;
     }
 
-    public function setNumber(Number $number): void
+    public function setNumber(string $number): void
     {
         $this->number = $number;
     }
@@ -157,14 +151,6 @@ class RelatedItem
             $item['creators'] = [];
             foreach ($this->creators as $creator) {
                 $item['creators'][] = $creator->toApiObject();
-            }
-        }
-
-        if (isset($this->numbers) AND count($this->numbers) > 0) {
-
-            $item['numbers'] = [];
-            foreach ($this->numbers as $number) {
-                $item['numbers'][] = $number->toApiObject();
             }
         }
 

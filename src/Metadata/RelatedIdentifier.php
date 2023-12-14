@@ -27,7 +27,7 @@ class RelatedIdentifier
     private string $relationType;
     private string $relatedIdentifier;
     private string $relatedIdentifierType;
-    private string $resourceTypeGeneral;
+    private ?string $resourceTypeGeneral;
 
     // TODO: add relatedMetadataScheme, schemeURI, schemeType
 

@@ -8,6 +8,7 @@ use Dagstuhl\DataCite\Metadata\Creator;
 use Dagstuhl\DataCite\Metadata\Date;
 use Dagstuhl\DataCite\Metadata\Description;
 use Dagstuhl\DataCite\Metadata\RelatedIdentifier;
+use Dagstuhl\DataCite\Metadata\RelatedItem;
 use Dagstuhl\DataCite\Metadata\Rights;
 use Dagstuhl\DataCite\Metadata\Subject;
 use Dagstuhl\DataCite\Metadata\Title;
@@ -20,7 +21,7 @@ interface DataCiteDataProvider
         'creators', 'contributors', 'descriptions',
         'sizes', 'formats', 'publicationYear',
         'subjects', 'language',
-        'alternateIdentifiers', 'relatedIdentifiers',
+        'alternateIdentifiers', 'relatedIdentifiers', 'relatedItems',
         'rightsList', 'type', 'dates'
     ];
 
@@ -78,6 +79,11 @@ interface DataCiteDataProvider
      * @return RelatedIdentifier[]
      */
     public function getRelatedIdentifiers(): array;
+
+    /**
+     * @return RelatedItem[]
+     */
+    public function getRelatedItems(): array;
 
     /**
      * @return Rights[]

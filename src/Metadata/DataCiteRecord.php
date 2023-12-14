@@ -180,8 +180,7 @@ class DataCiteRecord
         $this->attributes->relatedItems = [];
 
         foreach($relatedItems as $relatedItem) {
-            //$this->addRelatedItem($relatedItem);
-            $this->attributes->relatedItems = $relatedItem->toApiObject();
+            $this->addRelatedItem($relatedItem);
         }
     }
 
