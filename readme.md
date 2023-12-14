@@ -1,6 +1,6 @@
-# The LZI DataCite API client
+# The Dagstuhl DataCite API client
 
-The aim of this project is to provide a simply-to-use php interface for 
+The aim of this project is to provide an easy-to-use php interface for 
 - providing scheme-compliant DataCite metadata
 - registering/updating the doi metadata via the DataCite API.
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace LZI\DataCite\Metadata;
+namespace Dagstuhl\DataCite\Metadata;
 
 class Type
 {
@@ -34,9 +34,9 @@ class Type
     const RESOURCE_TYPE_GENERAL_WORKFLOW = 'Workflow';
     const RESOURCE_TYPE_GENERAL_OTHER = 'Other';
 
-    private $types;
+    private object $types;
 
-    public function __construct($resourceType, $resourceTypeGeneral, $bibtex = NULL)
+    public function __construct(string $resourceType, string $resourceTypeGeneral, string $bibtex = NULL)
     {
         $this->types = new \stdClass();
         $this->types->resourceType = $resourceType;
@@ -49,7 +49,7 @@ class Type
 
     // ---- pre-defined types ------------------------------------
 
-    public static function article()
+    public static function article(): static
     {
         return new static(
             self::RESOURCE_TYPE_ARTICLE,
@@ -58,7 +58,7 @@ class Type
         );
     }
 
-    public static function book()
+    public static function book(): static
     {
         return new static(
             self::RESOURCE_TYPE_BOOK,
@@ -67,7 +67,7 @@ class Type
         );
     }
 
-    public static function conferenceProceedings()
+    public static function conferenceProceedings(): static
     {
         return new static(
             self::RESOURCE_TYPE_CONFERENCE_PROCEEDINGS,
@@ -76,7 +76,7 @@ class Type
         );
     }
 
-    public static function conferenceProceedingsPaper()
+    public static function conferenceProceedingsPaper(): static
     {
         return new static(
             self::RESOURCE_TYPE_CONFERENCE_PAPER,
@@ -84,7 +84,7 @@ class Type
             self::BIBTEX_TYPE_IN_PROCEEDINGS);
     }
 
-    public static function seminarReportsCollection()
+    public static function seminarReportsCollection(): static
     {
         return new static(
             self::RESOURCE_TYPE_SEMINAR_REPORTS,
@@ -93,7 +93,7 @@ class Type
         );
     }
 
-    public static function seminarReport()
+    public static function seminarReport(): static
     {
         return new static(
             self::RESOURCE_TYPE_SEMINAR_REPORT,
@@ -103,7 +103,7 @@ class Type
     }
 
 
-    public function toApiObject()
+    public function toApiObject(): object
     {
         return $this->types;
     }

@@ -1,6 +1,6 @@
 <?php
 
-namespace LZI\DataCite\Metadata;
+namespace Dagstuhl\DataCite\Metadata;
 
 class RelatedIdentifier
 {
@@ -24,10 +24,10 @@ class RelatedIdentifier
     const TYPE_URN = 'URN';
     const TYPE_W3ID = 'w3id';
 
-    private $relationType;
-    private $relatedIdentifier;
-    private $relatedIdentifierType;
-    private $resourceTypeGeneral;
+    private string $relationType;
+    private string $relatedIdentifier;
+    private string $relatedIdentifierType;
+    private string $resourceTypeGeneral;
 
     // TODO: add relatedMetadataScheme, schemeURI, schemeType
 
@@ -39,42 +39,42 @@ class RelatedIdentifier
         $this->resourceTypeGeneral = $resourceTypeGeneral;
     }
 
-    public static function isPartOf(string $relatedIdentifier, string $relatedIdentifierType)
+    public static function isPartOf(string $relatedIdentifier, string $relatedIdentifierType): static
     {
         return new static('IsPartOf', $relatedIdentifier, $relatedIdentifierType);
     }
 
-    public static function hasPart(string $relatedIdentifier, string $relatedIdentifierType)
+    public static function hasPart(string $relatedIdentifier, string $relatedIdentifierType): static
     {
         return new static('HasPart', $relatedIdentifier, $relatedIdentifierType);
     }
 
-    public static function isVersionOf(string $relatedIdentifier, string $relatedIdentifierType, string $resourceTypeGeneral = NULL)
+    public static function isVersionOf(string $relatedIdentifier, string $relatedIdentifierType, string $resourceTypeGeneral = NULL): static
     {
         return new static('IsVersionOf', $relatedIdentifier, $relatedIdentifierType, $resourceTypeGeneral);
     }
 
-    public static function isSupplementTo(string $relatedIdentifier, string $relatedIdentifierType, string $resourceTypeGeneral = NULL)
+    public static function isSupplementTo(string $relatedIdentifier, string $relatedIdentifierType, string $resourceTypeGeneral = NULL): static
     {
         return new static('IsSupplementTo', $relatedIdentifier, $relatedIdentifierType, $resourceTypeGeneral);
     }
 
-    public static function isSupplementedBy(string $relatedIdentifier, string $relatedIdentifierType, string $resourceTypeGeneral = NULL)
+    public static function isSupplementedBy(string $relatedIdentifier, string $relatedIdentifierType, string $resourceTypeGeneral = NULL): static
     {
         return new static('IsSupplementedBy', $relatedIdentifier, $relatedIdentifierType, $resourceTypeGeneral);
     }
 
-    public static function cites(string $relatedIdentifier, string $relatedIdentifierType)
+    public static function cites(string $relatedIdentifier, string $relatedIdentifierType): static
     {
         return new static('Cites', $relatedIdentifier, $relatedIdentifierType);
     }
 
-    public static function isCitedBy(string $relatedIdentifier, string $relatedIdentifierType)
+    public static function isCitedBy(string $relatedIdentifier, string $relatedIdentifierType): static
     {
         return new static('IsCitedBy', $relatedIdentifier, $relatedIdentifierType);
     }
 
-    public static function parseCites(string $string, string $resourceTypeGeneral = NULL)
+    public static function parseCites(string $string, string $resourceTypeGeneral = NULL): static
     {
         $related = static::parseFromUrl($string);
 
@@ -82,11 +82,9 @@ class RelatedIdentifier
     }
 
     /**
-     * @param string $string
-     * @param string|null $resourceTypeGeneral
      * @return static[]
      */
-    public static function parseIsSupplementTo(string $string, string $resourceTypeGeneral = NULL)
+    public static function parseIsSupplementTo(string $string, string $resourceTypeGeneral = NULL): array
     {
         if (empty($string)) {
             return [];
@@ -106,11 +104,9 @@ class RelatedIdentifier
     }
 
     /**
-     * @param string $string
-     * @param string|null $resourceTypeGeneral
      * @return static[]
      */
-    public static function parseIsVersionOf(string $string, string $resourceTypeGeneral = NULL)
+    public static function parseIsVersionOf(string $string, string $resourceTypeGeneral = NULL): array
     {
         if (empty($string)) {
             return [];
@@ -159,7 +155,7 @@ class RelatedIdentifier
      * @param bool $fullURLs
      * @return array
      */
-    private static function parseRelatedIdentifiers($string, $relationType, $fullURLs = false)
+    private static function parseRelatedIdentifiers(string $string, $relationType, $fullURLs = false): array
     {
         $result = [];
 
@@ -176,12 +172,7 @@ class RelatedIdentifier
         return $result;
     }
 
-    /**
-     * @param $string
-     * @param bool $fullURLs
-     * @return array
-     */
-    private static function parseFromUrl($string, $fullURLs = false)
+    private static function parseFromUrl(string $string, bool $fullURLs = false): array
     {
         $type = self::TYPE_URL;
 
@@ -200,7 +191,7 @@ class RelatedIdentifier
 
             $type = self::TYPE_ARXIV;
 
-            if(!$fullURLs) {
+            if (!$fullURLs) {
                 $string = str_replace([
                     'http://arxiv.org/abs/', 'https://arxiv.org/abs/',
                     'http://arXiv.org/abs/', 'https://arXiv.org/abs/',
@@ -247,7 +238,7 @@ class RelatedIdentifier
     // IsObsoletedBy
     // Obsoletes
 
-    public function toApiObject()
+    public function toApiObject(): object
     {
         $r = [
             'relatedIdentifier' => $this->relatedIdentifier,

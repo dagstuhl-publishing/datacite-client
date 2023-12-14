@@ -1,14 +1,14 @@
 <?php
 
-namespace LZI\DataCite\Metadata;
+namespace Dagstuhl\DataCite\Metadata;
 
 class Title
 {
-    private $title;
-    private $lang;
-    private $titleType;
+    private string $title;
+    private ?string $lang;
+    private ?string $titleType;
 
-    public function __construct($title, $language = NULL, $titleType = NULL)
+    public function __construct(string $title, string $language = NULL, string $titleType = NULL)
     {
         $this->title = $title;
         $this->lang = $language;
@@ -16,33 +16,33 @@ class Title
     }
 
 
-    public static function main(string $title, $language = NULL)
+    public static function main(string $title, string $language = NULL): static
     {
         return new static($title, $language);
     }
 
-    public static function alternative(string $title, $language = NULL)
+    public static function alternative(string $title, string $language = NULL): static
     {
         return new static($title, $language, 'AlternativeTitle');
     }
 
-    public static function subtitle(string $title, $language = NULL)
+    public static function subtitle(string $title, string $language = NULL): static
     {
         return new static($title, $language, 'Subtitle');
     }
 
-    public static function translatedTitle(string $title, $language = NULL)
+    public static function translatedTitle(string $title, string $language = NULL): static
     {
         return new static($title, $language, 'TranslatedTitle');
     }
 
-    public static function other(string $title, $language = NULL)
+    public static function other(string $title, string $language = NULL): static
     {
         return new static($title, $language, 'Other');
     }
 
 
-    public function toApiObject()
+    public function toApiObject(): object
     {
         $t = [];
 
@@ -54,6 +54,6 @@ class Title
             }
         }
 
-        return $t;
+        return (object) $t;
     }
 }

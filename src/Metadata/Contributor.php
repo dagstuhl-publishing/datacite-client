@@ -1,11 +1,11 @@
 <?php
 
-namespace LZI\DataCite\Metadata;
+namespace Dagstuhl\DataCite\Metadata;
 
 class Contributor
 {
-    private $name;
-    private $contributorType;
+    private Name $name;
+    private string $contributorType;
 
     public function __construct(Name $name, string $contributorType)
     {
@@ -13,12 +13,12 @@ class Contributor
         $this->contributorType = $contributorType;
     }
 
-    public static function editor(Name $name)
+    public static function editor(Name $name): static
     {
         return new static($name, 'Editor');
     }
 
-    public static function dataCollector(Name $name)
+    public static function dataCollector(Name $name): static
     {
         return new static($name, 'DataCollector');
     }
@@ -46,7 +46,7 @@ class Contributor
     // WorkPackageLeader
     // Other
 
-    public function toApiObject()
+    public function toApiObject(): object
     {
         $object = $this->name->toApiObject();
         $object->contributorType = $this->contributorType;

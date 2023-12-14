@@ -1,15 +1,15 @@
 <?php
 
-namespace LZI\DataCite\Metadata;
+namespace Dagstuhl\DataCite\Metadata;
 
 class Rights
 {
-    private $rights;
-    private $rightsIdentifier;
-    private $rightsUri;
-    private $lang;
-    private $rightsIdentifierScheme;
-    private $schemeUri;
+    private string $rights;
+    private ?string $rightsIdentifier;
+    private ?string $rightsUri;
+    private ?string $lang;
+    private ?string $rightsIdentifierScheme;
+    private ?string $schemeUri;
 
     const RIGHTS_INFO_EU_SEMANTICS_OPEN_ACCESS = 'info:eu-repo/semantics/openAccess';
 
@@ -33,11 +33,12 @@ class Rights
 
     public function __construct(
         string $rights,
-        $rightsUri = NULL,
-        $language = NULL,
-        $rightsIdentifier = NULL,
-        $rightsIdentifierScheme = NULL,
-        $schemeUri = NULL)
+        string $rightsUri = NULL,
+        string $language = NULL,
+        string $rightsIdentifier = NULL,
+        string $rightsIdentifierScheme = NULL,
+        string $schemeUri = NULL
+    )
     {
         $this->rights = $rights;
         $this->rightsUri = $rightsUri;
@@ -47,7 +48,7 @@ class Rights
         $this->schemeUri = $schemeUri;
     }
 
-    public function toApiObject()
+    public function toApiObject(): object
     {
         $r = [ 'rights' => $this->rights ];
 
@@ -60,23 +61,23 @@ class Rights
         return (object) $r;
     }
 
-    public static function infoEuRepoSemanticsOpenAccess()
+    public static function infoEuRepoSemanticsOpenAccess(): static
     {
-        return new self(self::RIGHTS_INFO_EU_SEMANTICS_OPEN_ACCESS);
+        return new static(self::RIGHTS_INFO_EU_SEMANTICS_OPEN_ACCESS);
     }
 
-    public static function getLicenseBySpdxIdentifier($rightsIdentifier)
+    public static function getLicenseBySpdxIdentifier($rightsIdentifier): static
     {
         $license = self::SPDX_LICENSES[$rightsIdentifier];
 
-        return new self(
+        return new static(
             $license[0], $license[1], $license[3] ?? 'en', $license[2],
             self::RIGHTS_IDENTIFIER_SCHEME_SPDX, self::SCHEME_URI_SPDX
         );
     }
 
-    public static function license_CC_BY_3_0()
+    public static function license_CC_BY_3_0(): static
     {
-        return self::getLicenseBySpdxIdentifier('CC-BY-3.0');
+        return static::getLicenseBySpdxIdentifier('CC-BY-3.0');
     }
 }

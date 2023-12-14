@@ -1,21 +1,21 @@
 <?php
 
-namespace LZI\DataCite\Metadata;
+namespace Dagstuhl\DataCite\Metadata;
 
 class Name
 {
-    private $name;
-    private $nameType;
-    private $givenName;
-    private $familyName;
+    private string $name;
+    private string $nameType;
+    private string $givenName;
+    private string $familyName;
     /**
      * @var Affiliation[]
      */
-    private $affiliations;
+    private array $affiliations;
     /**
      * @var NameIdentifier[]
      */
-    private $nameIdentifiers;
+    private array $nameIdentifiers;
 
     /**
      * Name constructor.
@@ -26,7 +26,7 @@ class Name
      * @param Affiliation[] $affiliations
      * @param NameIdentifier[] $nameIdentifiers
      */
-    private function __construct(string $name, string $nameType, $givenName = NULL, $familyName = NULL, $affiliations = [], $nameIdentifiers = [])
+    private function __construct(string $name, string $nameType, string $givenName = NULL, string $familyName = NULL, array $affiliations = [], array $nameIdentifiers = [])
     {
         $this->name = trim($name);
         $this->nameType = trim($nameType);
@@ -37,18 +37,14 @@ class Name
     }
 
     /**
-     * @param string $name
-     * @param null $givenName
-     * @param null $familyName
-     * @param array $affiliations
-     * @param array $nameIdentifiers
-     * @return static
+     * @param Affiliation[] $affiliations
+     * @param NameIdentifier[] $nameIdentifiers
      *
      * NOTE: If $name contains "," then $givenName and $familyName will be set automatically where
      * $name is assumed to be of the form "family name, first name".
      * By setting $givenName or $familyName to a non-NULL value, one can overwrite these auto-detected values.
      */
-    public static function personal(string $name, $givenName = NULL, $familyName = NULL, $affiliations = [], $nameIdentifiers = [])
+    public static function personal(string $name, string $givenName = NULL, string $familyName = NULL, array $affiliations = [], array $nameIdentifiers = []): static
     {
         $parts = explode(',', $name);
 
@@ -61,20 +57,17 @@ class Name
     }
 
     /**
-     * @param string $name
-     * @param null $givenName
-     * @param null $familyName
-     * @param array $affiliations
-     * @param array $nameIdentifiers
-     * @return static
+     * @param Affiliation[] $affiliations
+     * @param NameIdentifier[] $nameIdentifiers
      */
-    public static function organizational(string $name, $givenName = NULL, $familyName = NULL, $affiliations = [], $nameIdentifiers = []) {
+    public static function organizational(string $name, string $givenName = NULL, string $familyName = NULL, array $affiliations = [], array $nameIdentifiers = []): static
+    {
         return new static($name, 'Organizational', $givenName, $familyName, $affiliations, $nameIdentifiers);
     }
 
     // ---- name identifiers ----------------------------------------
 
-    public function addNameIdentifier(NameIdentifier $nameIdentifier)
+    public function addNameIdentifier(NameIdentifier $nameIdentifier): void
     {
         $this->nameIdentifiers[] = $nameIdentifier;
     }
@@ -82,23 +75,23 @@ class Name
     /**
      * @param NameIdentifier[] $nameIdentifiers
      */
-    public function setNameIdentifiers(array $nameIdentifiers)
+    public function setNameIdentifiers(array $nameIdentifiers): void
     {
         $this->nameIdentifiers = [];
 
-        foreach($nameIdentifiers as $nameIdentifers) {
-            $this->addNameIdentifier($nameIdentifers);
+        foreach($nameIdentifiers as $nameIdentifier) {
+            $this->addNameIdentifier($nameIdentifier);
         }
     }
 
     // ---- affiliations -------------------------------------------
 
-    public function addAffiliation(Affiliation $affiliation)
+    public function addAffiliation(Affiliation $affiliation): void
     {
         $this->affiliations[] = $affiliation;
     }
 
-    public function setAffiliations(array $affiliations)
+    public function setAffiliations(array $affiliations): void
     {
         $this->affiliations = [];
 
@@ -108,7 +101,7 @@ class Name
     }
 
 
-    public function toApiObject()
+    public function toApiObject(): object
     {
         $n = [];
 

@@ -1,18 +1,18 @@
 <?php
 
-namespace LZI\DataCite\Metadata;
+namespace Dagstuhl\DataCite\Metadata;
 
 class Subject
 {
-    private $subject;
-    private $subjectScheme;
-    private $lang;
-    private $schemeURI;
-    private $valueURI;
+    private string $subject;
+    private ?string $subjectScheme;
+    private ?string $lang;
+    private ?string $schemeURI;
+    private ?string $valueURI;
 
     const SUBJECT_SCHEME_ACM_2012 = 'The 2012 ACM Computing Classification System';
 
-    public function __construct($subject, $language = NULL, $subjectScheme = NULL, $schemeURI = NULL, $valueURI = NULL)
+    public function __construct(string $subject, string $language = NULL, string $subjectScheme = NULL, string $schemeURI = NULL, string $valueURI = NULL)
     {
         $this->subject = $subject;
         $this->lang = $language;
@@ -21,7 +21,7 @@ class Subject
         $this->valueURI = $valueURI;
     }
 
-    public function toApiObject()
+    public function toApiObject(): object
     {
         $s = [ 'subject' => $this->subject ];
 

@@ -1,40 +1,40 @@
 <?php
 
-namespace LZI\DataCite\Metadata;
+namespace Dagstuhl\DataCite\Metadata;
 
 class Number
 {
-    private $number;
-    private $numberType;
+    private string $number;
+    private ?string $numberType;
 
-    public function __construct($number, $numberType = NULL)
+    public function __construct(string $number, string $numberType = NULL)
     {
         $this->number = $number;
         $this->numberType = $numberType;
     }
 
 
-    public static function main(string $number)
+    public static function main(string $number): static
     {
         return new static($number);
     }
 
-    public static function article(string $number)
+    public static function article(string $number): static
     {
         return new static($number, 'Article');
     }
 
-    public static function chapter(string $number)
+    public static function chapter(string $number): static
     {
         return new static($number, 'Chapter');
     }
 
-    public static function report(string $number)
+    public static function report(string $number): static
     {
         return new static($number, 'Report');
     }
 
-    public static function other(string $number)
+    public static function other(string $number): static
     {
         return new static($number, 'Other');
     }

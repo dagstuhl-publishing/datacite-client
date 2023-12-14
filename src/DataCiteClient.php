@@ -1,8 +1,8 @@
 <?php
 
-namespace LZI\DataCite;
+namespace Dagstuhl\DataCite;
 
-use LZI\DataCite\Metadata\DataCiteRecord;
+use Dagstuhl\DataCite\Metadata\DataCiteRecord;
 use stdClass;
 use Symfony\Component\HttpClient\HttpClient;
 use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
@@ -28,7 +28,7 @@ class DataCiteClient
     private ?HttpClientInterface $httpClient;
     private ?ResponseInterface $response = NULL;
 
-    private $status = NULL;
+    private ?string $status = NULL;
     private ?Throwable $exception = NULL;
 
     public function __construct(string $username, string $password, string $providerUrl) {
@@ -36,24 +36,24 @@ class DataCiteClient
         $this->httpClient = HttpClient::create();
     }
 
-    public function lastRequestFailed() : bool
+    public function lastRequestFailed(): bool
     {
         return !($this->status == 200 OR $this->status == 201);
     }
 
-    public function getUrl() : string
+    public function getUrl(): string
     {
         $parts =  explode('@', $this->providerUrl);
 
         return $parts[1] ?? 'ERROR';
     }
 
-    public function getResponse() : ?ResponseInterface
+    public function getResponse(): ?ResponseInterface
     {
         return $this->response;
     }
 
-    public function getStatus() : ?int
+    public function getStatus(): ?int
     {
         $statusCode = NULL;
 
@@ -67,12 +67,12 @@ class DataCiteClient
         return $statusCode;
     }
 
-    public function getException() : ?Throwable
+    public function getException(): ?Throwable
     {
         return $this->exception;
     }
 
-    public function getErrorMessage() : string
+    public function getErrorMessage(): string
     {
         if ($this->exception !== NULL) {
             return self::ERROR_PREFIX. $this->exception->getMessage();
@@ -83,7 +83,7 @@ class DataCiteClient
             : '';
     }
 
-    private function getResponseBody() : ?stdClass
+    private function getResponseBody(): ?stdClass
     {
         $responseBody = NULL;
 
@@ -99,7 +99,7 @@ class DataCiteClient
             : $responseBody;
     }
 
-    private function makeRequest(...$requestParams) : ?stdClass
+    private function makeRequest(...$requestParams): ?stdClass
     {
         $data = NULL;
 
@@ -120,7 +120,7 @@ class DataCiteClient
         return $data;
     }
 
-    public function getDataCiteRecord(string $doi) : ?DataCiteRecord
+    public function getDataCiteRecord(string $doi): ?DataCiteRecord
     {
         $metadata = $this->makeRequest('GET', $this->providerUrl.self::ENDPOINT_DOIS.$doi);
 
@@ -130,7 +130,7 @@ class DataCiteClient
 
     }
 
-    public function updateDataCiteRecord(DataCiteRecord $dataCiteRecord) : ?DataCiteRecord
+    public function updateDataCiteRecord(DataCiteRecord $dataCiteRecord): ?DataCiteRecord
     {
         $metadata = $this->makeRequest(
             'PUT',
@@ -149,7 +149,7 @@ class DataCiteClient
     /**
      * see the self::STATE_... constants for possible states
      */
-    public function setDoiState(string $doi, string $state) : ?DataCiteRecord
+    public function setDoiState(string $doi, string $state): ?DataCiteRecord
     {
         $data =  [
             'data' => [

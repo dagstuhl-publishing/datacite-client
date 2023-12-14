@@ -1,6 +1,6 @@
 <?php
 
-namespace LZI\DataCite\Metadata;
+namespace Dagstuhl\DataCite\Metadata;
 
 class RelatedItem
 {
@@ -13,11 +13,13 @@ class RelatedItem
     // page 25, section 12.b
 
     const RELATION_TYPE_IS_PART_OF = 'IsPartOf';
+    const RELATION_TYPE_IS_PUBLISHED_IN = 'IsPublishedIn';
 
     const OPTIONAL_STRING_RELATED_PROPERTIES = [
         'publicationYear',
         'volume',
         'issue',
+        'number',
         'firstPage',
         'lastPage',
         'publisher',
@@ -31,6 +33,7 @@ class RelatedItem
     private string $publicationYear;
     private string $volume;
     private string $issue;
+    private Number $number;
     private string $firstPage;
     private string $lastPage;
     private string $publisher;
@@ -61,72 +64,72 @@ class RelatedItem
     // TODO: optional (0-1) relatedItemIdentifier, relatedItemIdentifierType
     // Series -> ISBN
 
-    public function setRelatedItemIdentifier(string $relatedItemIdentifier)
+    public function setRelatedItemIdentifier(string $relatedItemIdentifier): void
     {
         $this->relatedItemIdentifier = $relatedItemIdentifier;
     }
 
-    public function setRelatedItemIdentifierType(string $relatedItemIdentifierType)
+    public function setRelatedItemIdentifierType(string $relatedItemIdentifierType): void
     {
         $this->relatedItemIdentifierType = $relatedItemIdentifierType;
     }
 
-    public function addCreator(Creator $creator)
+    public function addCreator(Creator $creator): void
     {
         $this->creators[] = $creator;
     }
 
-    public function addTitle(Title $title)
+    public function addTitle(Title $title): void
     {
         $this->titles[] = $title;
     }
 
-    public function addNumber(Number $number)
+    public function addNumber(Number $number): void
     {
         $this->numbers[] = $number;
     }
 
-    public function setPublicationYear(int $year)
+    public function setPublicationYear(int $year): void
     {
         $this->publicationYear = $year;
     }
 
-    public function setVolume(string $volume)
+    public function setVolume(string $volume): void
     {
         $this->volume = $volume;
     }
 
-    public function setIssue(string $issue)
+    public function setIssue(string $issue): void
     {
         $this->issue = $issue;
     }
 
-    public function setNumber(Number $number)
+    public function setNumber(Number $number): void
     {
         $this->number = $number;
     }
 
-    public function setFirstPage(string $firstPage)
+    public function setFirstPage(string $firstPage): void
     {
         $this->firstPage = $firstPage;
     }
 
-    public function setLastPage(string $lastPage)
+    public function setLastPage(string $lastPage): void
     {
         $this->lastPage = $lastPage;
     }
 
-    public function setPublisher(string $publisher)
+    public function setPublisher(string $publisher): void
     {
         $this->publisher = $publisher;
     }
 
-    public function setEdition(string $edition)
+    public function setEdition(string $edition): void
     {
         $this->edition = $edition;
     }
 
-    public function addContributor(Contributor $contributor)
+    public function addContributor(Contributor $contributor): void
     {
         $this->contributors[] = $contributor;
     }

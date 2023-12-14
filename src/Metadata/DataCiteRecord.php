@@ -1,8 +1,8 @@
 <?php
 
-namespace LZI\DataCite\Metadata;
+namespace Dagstuhl\DataCite\Metadata;
 
-use LZI\DataCite\DataCiteDataProvider;
+use Dagstuhl\DataCite\DataCiteDataProvider;
 use stdClass;
 
 class DataCiteRecord
@@ -37,7 +37,7 @@ class DataCiteRecord
         }
     }
 
-    public static function fromDataProvider(DataCiteDataProvider $dataCiteInterface) : DataCiteRecord
+    public static function fromDataProvider(DataCiteDataProvider $dataCiteInterface): DataCiteRecord
     {
         $dataCiteRecord = new static();
 
@@ -54,7 +54,7 @@ class DataCiteRecord
 
     // ---- creators ---------------------------------
 
-    public function addCreator(Creator $creator)
+    public function addCreator(Creator $creator): void
     {
         if (!isset($this->attributes->creators)) {
             $this->attributes->creators = [];
@@ -66,7 +66,7 @@ class DataCiteRecord
     /**
      * @param Creator[] $creators
      */
-    public function setCreators(array $creators)
+    public function setCreators(array $creators): void
     {
         $this->attributes->creators = [];
 
@@ -77,7 +77,7 @@ class DataCiteRecord
 
     // ---- contributors -----------------------------
 
-    public function addContributor(Contributor $contributor)
+    public function addContributor(Contributor $contributor): void
     {
         if(!isset($this->attributes->contributors)) {
             $this->attributes->contributors = [];
@@ -89,7 +89,7 @@ class DataCiteRecord
     /**
      * @param Contributor[] $contributors
      */
-    public function setContributors(array $contributors)
+    public function setContributors(array $contributors): void
     {
         $this->attributes->contributors = [];
 
@@ -100,10 +100,7 @@ class DataCiteRecord
 
     // ---- dates ------------------------------------
 
-    /**
-     * @param Date $date
-     */
-    public function addDate(Date $date)
+    public function addDate(Date $date): void
     {
         if (!isset($this->attributes->dates)) {
             $this->attributes->dates = [];
@@ -115,7 +112,7 @@ class DataCiteRecord
     /**
      * @param Date[] $dates
      */
-    public function setDates(array $dates)
+    public function setDates(array $dates): void
     {
         $this->attributes->dates = [];
 
@@ -126,7 +123,7 @@ class DataCiteRecord
 
     // ---- description ------------------------------
 
-    public function addDescription(Description $description)
+    public function addDescription(Description $description): void
     {
         if (!isset($this->attributes->descriptions)) {
             $this->attributes->descriptions = [];
@@ -138,7 +135,7 @@ class DataCiteRecord
     /**
      * @param Description[] $descriptions
      */
-    public function setDescriptions(array $descriptions)
+    public function setDescriptions(array $descriptions): void
     {
         $this->attributes->descriptions = [];
 
@@ -149,7 +146,7 @@ class DataCiteRecord
 
     // ---- related identifiers ----------------------
 
-    public function addRelatedIdentifier(RelatedIdentifier $relatedIdentifier)
+    public function addRelatedIdentifier(RelatedIdentifier $relatedIdentifier): void
     {
         if(!isset($this->attributes->relatedIdentifiers)) {
             $this->attributes->relatedIdentifiers = [];
@@ -158,7 +155,7 @@ class DataCiteRecord
         $this->attributes->relatedIdentifiers[] = $relatedIdentifier->toApiObject();
     }
 
-    public function setRelatedIdentifiers(array $relatedIdentifiers)
+    public function setRelatedIdentifiers(array $relatedIdentifiers): void
     {
         $this->attributes->relatedIdentifiers = [];
 
@@ -169,7 +166,7 @@ class DataCiteRecord
 
     // ---- related items ----------------------------
 
-    public function addRelatedItem(RelatedItem $relatedItem)
+    public function addRelatedItem(RelatedItem $relatedItem): void
     {
         if(!isset($this->attributes->relatedItems)) {
             $this->attributes->relatedItems = [];
@@ -178,7 +175,7 @@ class DataCiteRecord
         $this->attributes->relatedItems[] = $relatedItem->toApiObject();
     }
 
-    public function setRelatedItems(array $relatedItems)
+    public function setRelatedItems(array $relatedItems): void
     {
         $this->attributes->relatedItems = [];
 
@@ -190,7 +187,7 @@ class DataCiteRecord
 
     // ---- alternate identifiers --------------------
 
-    public function addAlternateIdentifier(AlternateIdentifier $alternateIdentifier)
+    public function addAlternateIdentifier(AlternateIdentifier $alternateIdentifier): void
     {
         if (!isset($this->attributes->alternateIdentifiers)) {
             $this->attributes->alternateIdentifiers = [];
@@ -202,7 +199,7 @@ class DataCiteRecord
     /**
      * @param AlternateIdentifier[] $alternateIdentifiers
      */
-    public function setAlternateIdentifiers(array $alternateIdentifiers)
+    public function setAlternateIdentifiers(array $alternateIdentifiers): void
     {
         $this->attributes->alternateIdentifiers = [];
 
@@ -213,7 +210,7 @@ class DataCiteRecord
 
     // ---- doi --------------------------------------
 
-    public function setDoi(string $doi)
+    public function setDoi(string $doi): void
     {
         $this->attributes->doi = $doi;
     }
@@ -228,7 +225,7 @@ class DataCiteRecord
     /**
      * @param string[] $formats
      */
-    public function setFormats(array $formats)
+    public function setFormats(array $formats): void
     {
         $this->attributes->formats = $formats;
     }
@@ -243,7 +240,7 @@ class DataCiteRecord
 
     // ---- sizes ------------------------------------
 
-    public function setSizes(array $sizes)
+    public function setSizes(array $sizes): void
     {
         $this->attributes->sizes = $sizes;
     }
@@ -255,7 +252,7 @@ class DataCiteRecord
 
     // ---- titles -----------------------------------
 
-    public function addTitle(Title $title)
+    public function addTitle(Title $title): void
     {
         if (!isset($this->attributes->titles)) {
             $this->attributes->titles = [];
@@ -274,7 +271,7 @@ class DataCiteRecord
     /**
      * @param Title[] $titles
      */
-    public function setTitles(array $titles)
+    public function setTitles(array $titles): void
     {
         $this->attributes->titles = [];
 
@@ -296,7 +293,7 @@ class DataCiteRecord
 
     // ---- url --------------------------------------
 
-    public function setUrl(string $url)
+    public function setUrl(string $url): void
     {
         $this->attributes->url = $url;
     }
@@ -308,7 +305,7 @@ class DataCiteRecord
 
     // ---- publisher --------------------------------
 
-    public function setPublisher(string $publisher)
+    public function setPublisher(string $publisher): void
     {
         $this->attributes->publisher = $publisher;
     }
@@ -320,7 +317,7 @@ class DataCiteRecord
 
     // ---- publication year -------------------------
 
-    public function setPublicationYear(int $year)
+    public function setPublicationYear(int $year): void
     {
         $this->attributes->publicationYear = $year;
     }
@@ -332,7 +329,7 @@ class DataCiteRecord
 
     // ---- language ---------------------------------
 
-    public function setLanguage(string $languageCode)
+    public function setLanguage(string $languageCode): void
     {
         $this->attributes->language = $languageCode;
     }
@@ -344,7 +341,7 @@ class DataCiteRecord
 
     // ---- rights -----------------------------------
 
-    public function addRights(Rights $rights)
+    public function addRights(Rights $rights): void
     {
         if (!isset($this->attributes->rightsList)) {
             $this->attributes->rightsList = [];
@@ -356,7 +353,7 @@ class DataCiteRecord
     /**
      * @param Rights[] $rightsList
      */
-    public function setRightsList(array $rightsList)
+    public function setRightsList(array $rightsList): void
     {
         $this->attributes->rightsList = [];
 
@@ -390,7 +387,7 @@ class DataCiteRecord
     /**
      * @param Subject $subject
      */
-    public function addSubject(Subject $subject)
+    public function addSubject(Subject $subject): void
     {
         if (!isset($this->attributes->subjects)) {
             $this->attributes->subjects = [];
@@ -402,7 +399,7 @@ class DataCiteRecord
     /**
      * @param Subject[] $subjects
      */
-    public function setSubjects(array $subjects)
+    public function setSubjects(array $subjects): void
     {
         $this->attributes->subjects = [];
 
@@ -435,7 +432,7 @@ class DataCiteRecord
 
     // ---- types ------------------------------------
 
-    public function setType(Type $type)
+    public function setType(Type $type): void
     {
         $this->attributes->types = $type->toApiObject();
     }

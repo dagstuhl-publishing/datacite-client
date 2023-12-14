@@ -1,15 +1,15 @@
 <?php
 
-namespace LZI\DataCite\Metadata;
+namespace Dagstuhl\DataCite\Metadata;
 
 class Affiliation
 {
-    private $name;
-    private $affiliationIdentifier;
-    private $affiliationIdentifierScheme;
-    private $schemeUri;
+    private string $name;
+    private ?string $affiliationIdentifier;
+    private ?string $affiliationIdentifierScheme;
+    private ?string $schemeUri;
 
-    public function __construct(string $name, $affiliationIdentifier = NULL, $affiliationIdentifierScheme = NULL, $schemeUri = NULL)
+    public function __construct(string $name, string $affiliationIdentifier = NULL, string $affiliationIdentifierScheme = NULL, string $schemeUri = NULL)
     {
         $this->name = $name;
         $this->affiliationIdentifier = $affiliationIdentifier;
@@ -17,7 +17,7 @@ class Affiliation
         $this->schemeUri = $schemeUri;
     }
 
-    public static function ror($affiliationIdentifier, $name = NULL)
+    public static function ror(string $affiliationIdentifier, string $name = NULL): static
     {
         if ($name === NULL) {
             $apiObject = file_get_contents('https://api.ror.org/organizations/' . $affiliationIdentifier);
@@ -30,7 +30,7 @@ class Affiliation
         return new static($name, $affiliationIdentifier, 'ROR', 'https://ror.org');
     }
 
-    public function toApiObject()
+    public function toApiObject(): object
     {
         $a = [];
 

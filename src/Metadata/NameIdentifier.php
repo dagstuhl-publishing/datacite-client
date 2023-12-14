@@ -1,24 +1,24 @@
 <?php
 
-namespace LZI\DataCite\Metadata;
+namespace Dagstuhl\DataCite\Metadata;
 
 class NameIdentifier
 {
-    private $nameIdentifier;
-    private $nameIdentifierScheme;
-    private $schemeUri;
+    private string $nameIdentifier;
+    private string $nameIdentifierScheme;
+    private ?string $schemeUri;
 
     const NAME_IDENTIFIER_SCHEME_ORCID = 'ORCID';
     const SCHEME_URI_ORCID = 'https://orcid.org';
 
-    public function __construct(string $nameIdentifier, string $nameIdentifierScheme, $schemeUri = NULL)
+    public function __construct(string $nameIdentifier, string $nameIdentifierScheme, string $schemeUri = NULL)
     {
         $this->nameIdentifier = $nameIdentifier;
         $this->nameIdentifierScheme = $nameIdentifierScheme;
         $this->schemeUri = $schemeUri;
     }
 
-    public function toApiObject()
+    public function toApiObject(): object
     {
         $n['nameIdentifier'] = $this->nameIdentifier;
         $n['nameIdentifierScheme'] = $this->nameIdentifierScheme;
@@ -30,8 +30,8 @@ class NameIdentifier
         return (object) $n;
     }
 
-    public static function orcid($orcid)
+    public static function orcid(string $orcid): static
     {
-        return new self($orcid, self::NAME_IDENTIFIER_SCHEME_ORCID, self::SCHEME_URI_ORCID);
+        return new static($orcid, self::NAME_IDENTIFIER_SCHEME_ORCID, self::SCHEME_URI_ORCID);
     }
 }

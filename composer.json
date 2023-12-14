@@ -8,7 +8,7 @@
   ],
   "autoload": {
     "psr-4": {
-      "LZI\\DataCite\\": "src/"
+      "Dagstuhl\\DataCite\\": "src/"
     }
   },
   "description": "A simple DataCite API client for creating/updating DOI metadata",
@@ -17,13 +17,13 @@
     "Metadata"
   ],
   "license": "",
-  "name": "lzi/datacite",
+  "name": "dagstuhl/datacite",
   "readme": "readme.md",
   "require": {
     "symfony/http-client": "*",
-    "php": "^7.4|^8.0",
+    "php": "^8.1",
     "ext-json": "*"
   },
   "type": "library",
-  "time": "2020-10-07"
+  "time": "2023-12-14"
 }
