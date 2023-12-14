@@ -13,19 +13,15 @@ class RelatedItem
     // page 25, section 12.b
 
     const RELATION_TYPE_IS_PART_OF = 'IsPartOf';
-    const RELATION_TYPE_IS_PUBLISHED_IN = 'IsPublishedIn';
 
     const OPTIONAL_STRING_RELATED_PROPERTIES = [
         'publicationYear',
         'volume',
         'issue',
-        'number',
         'firstPage',
         'lastPage',
         'publisher',
         'edition',
-        'relatedItemIdentifier',
-        'relatedItemIdentifierType'
     ];
 
     private string $relatedItemType;
@@ -33,7 +29,6 @@ class RelatedItem
     private string $publicationYear;
     private string $volume;
     private string $issue;
-    private Number $number;
     private string $firstPage;
     private string $lastPage;
     private string $publisher;
@@ -150,6 +145,11 @@ class RelatedItem
                 $item[$prop] = $this->{$prop};
             }
         }
+
+        $item['relatedItemIdentifier'] = (object) [
+            'relatedItemIdentifier' => $this->relatedItemIdentifier,
+            'relatedItemIdentifierType' => $this->relatedItemIdentifierType
+        ];
 
         // properties of type array/object
         if (isset($this->creators) AND count($this->creators) > 0) {

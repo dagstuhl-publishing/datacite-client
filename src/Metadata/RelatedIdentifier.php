@@ -126,11 +126,9 @@ class RelatedIdentifier
     }
 
     /**
-     * @param string $string
-     * @param string|null $resourceTypeGeneral
      * @return static[]
      */
-    public static function parseIsSupplementedBy(string $string, string $resourceTypeGeneral = NULL)
+    public static function parseIsSupplementedBy(string $string, string $resourceTypeGeneral = NULL): array
     {
         if (empty($string)) {
             return [];
@@ -149,13 +147,7 @@ class RelatedIdentifier
         return $related;
     }
 
-    /**
-     * @param $string
-     * @param $relationType
-     * @param bool $fullURLs
-     * @return array
-     */
-    private static function parseRelatedIdentifiers(string $string, $relationType, $fullURLs = false): array
+    private static function parseRelatedIdentifiers(string $string, string $relationType, $fullURLs = false): array
     {
         $result = [];
 
