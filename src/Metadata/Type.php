@@ -27,6 +27,7 @@ class Type
     // TODO: complete https://schema.datacite.org/meta/kernel-4.4/doc/DataCite-MetadataKernel_v4.4.pdf, p. 16
     const RESOURCE_TYPE_GENERAL_AUDIOVISUAL = 'Audiovisual';
     const RESOURCE_TYPE_GENERAL_BOOK = 'Book';
+    const RESOURCE_TYPE_GENERAL_BOOK_CHAPTER = 'BookChapter';
     const RESOURCE_TYPE_GENERAL_COLLECTION = 'Collection';
     const RESOURCE_TYPE_GENERAL_CONFERENCE_PAPER = 'ConferencePaper';
     const RESOURCE_TYPE_GENERAL_CONFERENCE_PROCEEDING = 'ConferenceProceeding';
@@ -85,12 +86,12 @@ class Type
         );
     }
 
-    public static function frontMatter(): static
+    public static function frontMatter(?string $bibtexType = self::BIBTEX_TYPE_ARTICLE): static
     {
         return new static(
             static::RESOURCE_TYPE_GENERAL_TEXT,
             static::RESOURCE_TYPE_FRONT_MATTER,
-            static::BIBTEX_TYPE_ARTICLE
+            $bibtexType
         );
     }
 
