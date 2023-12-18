@@ -8,6 +8,7 @@ class Type
     const BIBTEX_TYPE_IN_PROCEEDINGS = 'inproceedings';
     const BIBTEX_TYPE_ARTICLE = 'article';
     const BIBTEX_TYPE_BOOK = 'book';
+    const BIBTEX_TYPE_INBOOK = 'inbook';
     const BIBTEX_TYPE_TECH_REPORT = 'techreport';
 
     const RESOURCE_TYPE_ARTICLE = 'Article';
@@ -86,6 +87,14 @@ class Type
         );
     }
 
+    public static function bookChapter(string $resourceType = NULL, string $bibtexType = self::BIBTEX_TYPE_INBOOK): static
+    {
+        return new static(
+            static::RESOURCE_TYPE_GENERAL_BOOK_CHAPTER,
+            $resourceType,
+            $bibtexType
+        );
+    }
     public static function frontMatter(?string $bibtexType = self::BIBTEX_TYPE_ARTICLE): static
     {
         return new static(
