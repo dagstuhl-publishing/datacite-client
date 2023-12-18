@@ -7,6 +7,7 @@ class RelatedItem
     // cf. https://schema.datacite.org/meta/kernel-4.4/doc/DataCite-MetadataKernel_v4.4.pdf
 
     const RELATION_TYPE_IS_PART_OF = 'IsPartOf';
+    const RELATION_HAS_PART = 'HasPart';
     const RELATION_TYPE_IS_PUBLISHED_IN = 'IsPublishedIn';
     const RELATED_IDENTIFIER_TYPE_DOI = 'DOI';
     const RELATED_IDENTIFIER_TYPE_ISSN = 'ISSN';
