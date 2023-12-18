@@ -4,15 +4,12 @@ namespace Dagstuhl\DataCite\Metadata;
 
 class RelatedItem
 {
-    // TODO: check relatedItemType, relationType
-    // for paper: Conference Proceeding, isPartOf (or isPublishedIn ?)
-    // for collection: Series, isPartOf
-
-    // TODO: constants for relationTypes
-    // see https://schema.datacite.org/meta/kernel-4.4/doc/DataCite-MetadataKernel_v4.4.pdf
-    // page 25, section 12.b
+    // cf. https://schema.datacite.org/meta/kernel-4.4/doc/DataCite-MetadataKernel_v4.4.pdf
 
     const RELATION_TYPE_IS_PART_OF = 'IsPartOf';
+    const RELATION_TYPE_IS_PUBLISHED_IN = 'IsPublishedIn';
+    const RELATED_IDENTIFIER_TYPE_DOI = 'DOI';
+    const RELATED_IDENTIFIER_TYPE_ISSN = 'ISSN';
 
     const OPTIONAL_STRING_RELATED_PROPERTIES = [
         'publicationYear',
@@ -54,9 +51,6 @@ class RelatedItem
         $this->relatedItemType = $relatedItemType;
         $this->relationType = $relationType;
     }
-
-    // TODO: optional (0-1) relatedItemIdentifier, relatedItemIdentifierType
-    // Series -> ISBN
 
     public function setRelatedItemIdentifier(string $relatedItemIdentifier): void
     {
@@ -121,6 +115,14 @@ class RelatedItem
     public function addContributor(Contributor $contributor): void
     {
         $this->contributors[] = $contributor;
+    }
+
+    /**
+     * @param Contributor[] $contributors
+     */
+    public function setContributors(array $contributors): void
+    {
+        $this->contributors = $contributors;
     }
 
     public function toApiObject(): object
