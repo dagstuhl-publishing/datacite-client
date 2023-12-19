@@ -37,8 +37,7 @@ class RelatedItem
     /** @var Contributor[] */
     private array $contributors;
 
-    /** @var string */
-    private string $relatedItemIdentifier;
+    private ?string $relatedItemIdentifier;
     private string $relatedItemIdentifierType;
 
     /** @var Creator[]  */
@@ -51,6 +50,7 @@ class RelatedItem
     {
         $this->relatedItemType = $relatedItemType;
         $this->relationType = $relationType;
+        $this->relatedItemIdentifier = NULL;
     }
 
     public function setRelatedItemIdentifier(string $relatedItemIdentifier): void
@@ -143,10 +143,12 @@ class RelatedItem
             }
         }
 
-        $item['relatedItemIdentifier'] = (object) [
-            'relatedItemIdentifier' => $this->relatedItemIdentifier,
-            'relatedItemIdentifierType' => $this->relatedItemIdentifierType
-        ];
+        if ($this->relatedItemIdentifier !== NULL) {
+            $item['relatedItemIdentifier'] = (object) [
+                'relatedItemIdentifier' => $this->relatedItemIdentifier,
+                'relatedItemIdentifierType' => $this->relatedItemIdentifierType
+            ];
+        }
 
         // properties of type array/object
         if (isset($this->creators) AND count($this->creators) > 0) {

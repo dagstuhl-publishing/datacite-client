@@ -47,10 +47,17 @@ The aim of this project is to provide an easy-to-use php interface for
 - Classifying the type of the Document
 
         $type = new Type(
-            TYPE::RESOURCE_TYPE_BOOK,
             TYPE::RESOURCE_TYPE_GENERAL_TEXT,
+            TYPE::RESOURCE_TYPE_BOOK,
             TYPE::BIBTEX_TYPE_BOOK
         );
+
+        // or choose a pre-defined type, e.g.,
+
+        $type = Type::conferenceProceedingsPaper();
+        $type = Type::conferenceJournalPaper();
+        $type = Type::bookChapter();
+        ...
 
         $dataCiteRecord->setType($type);
 
