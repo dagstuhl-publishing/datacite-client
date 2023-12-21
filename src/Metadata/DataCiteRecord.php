@@ -10,13 +10,14 @@ class DataCiteRecord
     const STATE_FINDABLE = 'findable';
     const STATE_REGISTERED = 'registered';
 
-    private $attributes;
+    const SCHEMA_VERSION_4 = 'http://datacite.org/schema/kernel-4';
+
+    private object $attributes;
 
     /**
      * DataCiteRecord constructor.
-     * @param object|array|string|null $attributes
      */
-    public function __construct($attributes = NULL)
+    public function __construct(object|array|string|null $attributes = NULL)
     {
         if (is_array($attributes)) {
             $this->attributes = (object) $attributes;
@@ -454,6 +455,8 @@ class DataCiteRecord
 
     public function toApiJson() : string
     {
+        $this->attributes->schemaVersion = static::SCHEMA_VERSION_4;
+
         $data = (object) [
             'data' => [
                 'id' => $this->getDoi(),
