@@ -3,7 +3,13 @@
     {
       "name": "Michael Didas",
       "email": "michael.didas@dagstuhl.de",
-      "role": "developer"
+      "homepage": "https://www.dagstuhl.de/en/institute/team/details/MD",
+      "role": "Developer"
+    },
+    {
+      "name": "Melanie Steffeck",
+      "email": "melli@etage-4.de",
+      "role": "Developer"
     }
   ],
   "autoload": {
@@ -14,9 +20,10 @@
   "description": "A simple DataCite API client for creating/updating DOI metadata",
   "keywords": [
     "DataCite",
+    "DOI regitration",
     "Metadata"
   ],
-  "license": "",
+  "license": "MIT license",
   "name": "dagstuhl/datacite",
   "readme": "readme.md",
   "require": {
@@ -25,5 +32,5 @@
     "ext-json": "*"
   },
   "type": "library",
-  "time": "2023-12-14"
+  "time": "2024-01-08"
 }
