@@ -1,8 +1,10 @@
 # The Dagstuhl DataCite API client
 
 The aim of this project is to provide an easy-to-use php interface for 
-- providing scheme-compliant DataCite metadata
+- providing schema-compliant DataCite metadata (Schema 4.4)
 - registering/updating the doi metadata via the DataCite API.
+
+Note: This is not a full API implementation; it only covers the use cases required by Dagstuhl Publishing.
 
 ### Code Examples:
 
