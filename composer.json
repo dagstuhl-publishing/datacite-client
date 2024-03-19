@@ -20,7 +20,7 @@
   "description": "A simple DataCite API client for creating/updating DOI metadata",
   "keywords": [
     "DataCite",
-    "DOI regitration",
+    "DOI registration",
     "Metadata"
   ],
   "license": "MIT license",
