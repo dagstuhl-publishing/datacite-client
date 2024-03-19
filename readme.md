@@ -4,7 +4,11 @@ The aim of this project is to provide an easy-to-use php interface for
 - providing schema-compliant DataCite metadata (Schema 4.4)
 - registering/updating the doi metadata via the DataCite API.
 
-Note: This is not a full API implementation; it only covers the use cases required by Dagstuhl Publishing.
+Note:
+- This is not a full API implementation; it only covers the use cases required by Dagstuhl Publishing.
+- This is a mirror of the master branch of our internal git.
+
+Installation: `composer require dagstuhl/datacite`
 
 ### Code Examples:
 

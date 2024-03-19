@@ -27,7 +27,7 @@
   "name": "dagstuhl/datacite",
   "readme": "readme.md",
   "require": {
-    "symfony/http-client": "*",
+    "symfony/http-client": "^6.0",
     "php": "^8.1",
     "ext-json": "*"
   },
