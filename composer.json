@@ -17,7 +17,7 @@
       "Dagstuhl\\DataCite\\": "src/"
     }
   },
-  "description": "A simple DataCite API client for creating/updating DOI metadata",
+  "description": "A DataCite API client for creating/updating DOI metadata (Schema 4.4), developed and used by Dagstuhl Publishing.",
   "keywords": [
     "DataCite",
     "DOI registration",
