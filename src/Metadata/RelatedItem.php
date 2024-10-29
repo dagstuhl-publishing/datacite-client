@@ -9,6 +9,9 @@ class RelatedItem
     const RELATION_TYPE_IS_PART_OF = 'IsPartOf';
     const RELATION_HAS_PART = 'HasPart';
     const RELATION_TYPE_IS_PUBLISHED_IN = 'IsPublishedIn';
+    const RELATION_TYPE_IS_SUPPLEMENT_TO = 'IsSupplementTo';
+    const RELATION_TYPE_IS_SUPPLEMENTED_BY = 'IsSupplementedBy';
+
     const RELATED_IDENTIFIER_TYPE_DOI = 'DOI';
     const RELATED_IDENTIFIER_TYPE_ISSN = 'ISSN';
 
