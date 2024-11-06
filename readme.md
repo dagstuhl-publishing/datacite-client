@@ -1,3 +1,6 @@
+[![SWH](https://archive.softwareheritage.org/badge/swh:1:dir:5a2b424c616911b9792bf649add426f98ff309e5/)](https://archive.softwareheritage.org/swh:1:dir:5a2b424c616911b9792bf649add426f98ff309e5;origin=https://github.com/dagstuhl-publishing/datacite-client;visit=swh:1:snp:6ec2d92ac444e8c361c21b007aa66046d2fd5e0a;anchor=swh:1:rev:a7e2416acf8cfb34bb84cfa1fb6cd8ce4efb2782)
+
+
 # The Dagstuhl DataCite API client
 
 The aim of this project is to provide an easy-to-use php interface for 
